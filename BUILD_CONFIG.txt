@@ -1,0 +1,58 @@
+Tor Version: Tor 0.4.8.17 
+
+Build Features
+  Compiler:                                                      gcc
+  Host OS:                                                       linux-gnu
+  License Option:                                                GPL
+
+  Warnings are fatal (--enable-fatal-warnings):                  no
+  Android support (--enable-android):                            no
+
+Static Build
+  tor (--enable-static-tor):                                     yes
+  libevent:                                                      /build/libevent/dist/lib
+  libssl:                                                        /build/openssl/dist/lib
+  zlib1g:                                                        /build/zlib/dist/lib
+
+Optional Libraries
+  libnss (--enable-nss):                                         no
+  libseccomp (--disable-seccomp):                                no
+  libscrypt (--disable-libscrypt):                               no
+  Systemd support (--enable-systemd):                            no
+  liblzma (--enable-lzma):                                       yes
+  libzstd (--enable-zstd):                                       yes
+
+Hardening
+  Compiler Hardening (--disable-gcc-hardening):                  no
+  Linker Hardening (--disable-linker-hardening):                 yes
+  Fragile Hardening (--enable-fragile-hardening, dev only):      no
+
+Modules
+  relay (--disable-module-relay):                                yes
+  dirauth (--disable-module-dirauth):                            yes
+  dircache:                                                      yes
+  pow (--disable-module-pow):                                    yes
+
+Documentation
+  AsciiDoc (--disable-asciidoc):                                 no
+  Man Pages (--disable-manpage):                                 no
+  HTML Manual (--disable-html-manual):                           no
+
+Tests
+  Unit tests (--disable-unittests):                              no
+  assert()s enabled (--enable-asserts-in-tests, dev only):       no
+  Code Coverage (--enable-coverage):                             no
+  libFuzzer support (--enable-libfuzzer):                        no
+  OSS-Fuzz support (--enable-oss-fuzz):                          no
+
+Tracing (--enable-tracing-instrumentation-<type>)
+  Tracepoints to log_debug() (log-debug):                        no
+  USDT Instrumentation (usdt):                                   no
+  LTTng Instrumentation (lttng):                                 no
+
+Install Directories
+  Binaries:                                                      /build/tor/dist/bin
+  Configuration:                                                 /etc/tor
+  Man Pages:                                                     /build/tor/dist/share/man
+
+Configure Line: ./configure --prefix=/build/tor/dist --sysconfdir=/etc --enable-static-tor --enable-static-libevent --with-libevent-dir=/build/libevent/dist --enable-static-openssl --with-openssl-dir=/build/openssl/dist --enable-static-zlib --with-zlib-dir=/build/zlib/dist --enable-gpl --disable-seccomp --disable-libscrypt --disable-tool-name-check --disable-gcc-hardening --disable-html-manual --disable-manpage --disable-asciidoc --disable-systemd --disable-unittests
