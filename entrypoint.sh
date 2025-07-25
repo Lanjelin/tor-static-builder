@@ -124,7 +124,7 @@ fi
 # === Optionally compress all binaries in /export/bin
 if [[ "${COMPRESS:-1}" == "1" && -d /export/bin ]]; then
   log_step "Compressing all /export/bin binaries with UPX"
-  find /export/bin -type f -executable -exec upx --best --lzma {} +
+  find /export/bin -type f -executable -exec upx --best --lzma {} + || true
 fi
 
 echo "Build and export complete."
