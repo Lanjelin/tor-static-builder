@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 exec 3>&1 # Save original stdout
-# exec > >(tee /export/build.log) 2>&1
-# exec >/export/build.log 2>&1
 if [[ "${VERBOSE:-0}" != "1" ]]; then
   exec >/export/build.log 2>&1
 else
@@ -122,7 +120,7 @@ if [[ -n "${PUID:-}" && -n "${PGID:-}" ]]; then
 fi
 
 # === Optionally compress all binaries in /export/bin
-if [[ "${COMPRESS:-1}" == "1" && -d /export/bin ]]; then
+if [[ "${COMPRESS:-0}" == "1" && -d /export/bin ]]; then
   log_step "Compressing all /export/bin binaries with UPX"
   find /export/bin -type f -executable -exec upx --best --lzma {} + || true
 fi
